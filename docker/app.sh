@@ -4,6 +4,7 @@ while true; do
 	# Fetch a recent price from Binance.
 	price=$(curl -s "https://www.binance.com/api/v3/ticker/price?symbol=${TICKER}" | jq '(.price | tonumber) * 1000000')
 	if [ -z "$price" ]; then
+		sleep 15
 		continue
 	fi
 
