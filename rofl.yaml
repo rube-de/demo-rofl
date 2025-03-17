@@ -1,5 +1,5 @@
 name: demo-rofl
-version: 0.1.0
+version: 0.1.1
 repository: https://github.com/oasisprotocol/demo-rofl
 author: Jernej Kos <jernej@kos.mx>
 license: Apache-2.0
@@ -33,8 +33,8 @@ deployments:
           min_tcb_evaluation_data_number: 17
           tdx: {}
       enclaves:
-        - pwl5NhdfqHhw9O7pEUUQtPVnPS3D447JH2YEywykCcQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
-        - Dl83HSFL3IjplvKGnmmDk9zeD0/Ea4qxHqqrzRIb050AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+        - gMGvSFvrSbjBr35hQdfv8iFEtKDr88a9qn97Aws6TGQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+        - veDjTkd+vVuOr6QAPgf/CPKoaPP8oqf8onTiBHrzZzUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
       endorsements:
         - any: {}
       fees: endorsing_node
