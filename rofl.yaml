@@ -39,6 +39,3 @@ deployments:
         - any: {}
       fees: endorsing_node
       max_expiration: 3
-    secrets:
-      - name: foo
-        value: pGJwa1ggL8WH1uN4duUVQbrxegApzlW4yXd+96ygfpYG8Qdy/DFkbmFtZVNl0HYM2zBxzZS4buSPZWbQV8l+ZW5vbmNlTypzdpiaAo45zHiAqMst5mV2YWx1ZVTFJjKzfthesm/P4tuLPG3AsVkiIA==
