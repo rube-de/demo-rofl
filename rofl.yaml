@@ -24,6 +24,7 @@ deployments:
     network: testnet
     paratime: sapphire
     admin: test_a
+    oci_repository: ghcr.io/kostko/demo-rofl:default
     trust_root:
       height: 24805610
     policy:
@@ -39,3 +40,8 @@ deployments:
         - any: {}
       fees: endorsing_node
       max_expiration: 3
+    machines:
+      default:
+        provider: rofl_provider_testnet_a
+        offer: test
+        id: "0000000000000002"
