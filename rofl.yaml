@@ -19,7 +19,7 @@ artifacts:
     runtime: https://github.com/oasisprotocol/oasis-sdk/releases/download/rofl-containers%2Fv0.5.0/rofl-containers#800be74e543f1d10d12ef6fadce89dd0a0ce7bc798dbab4f8d7aa012d82fbff1
     compose: compose.yaml
 deployments:
-  default:
+  test:
     app_id: rofl1qp55evqls4qg6cjw5fnlv4al9ptc0fsakvxvd9uw
     network: testnet
     paratime: sapphire
