@@ -1,6 +1,9 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 
+import * as dotenv from "dotenv";
+dotenv.config();
+
 import "./src/tasks";
 
 const config: HardhatUserConfig = {

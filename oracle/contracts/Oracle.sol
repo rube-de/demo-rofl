@@ -8,7 +8,6 @@ contract Oracle {
 
     // Configuration.
     uint8 public threshold;
-    bytes21 public roflAppID;
 
     // Observations.
     struct Observation {
@@ -18,18 +17,17 @@ contract Oracle {
     uint128[] private observations;
     Observation private lastObservation;
 
-    constructor(bytes21 _roflAppID, uint8 _threshold) {
+    event ObservationSubmitted(uint128 value, uint block);
+
+    constructor(uint8 _threshold) {
         require(_threshold > 0, "Invalid threshold");
 
-        roflAppID = _roflAppID;
         threshold = _threshold;
         lastObservation.value = 0;
         lastObservation.block = 0;
     }
 
     function submitObservation(uint128 _value) external {
-        // Ensure only the authorized ROFL app can submit.
-        Subcall.roflEnsureAuthorizedOrigin(roflAppID);
 
         // NOTE: This is a naive oracle implementation for ROFL example purposes.
         // A real oracle must do additional checks and better aggregation before
@@ -51,6 +49,7 @@ contract Oracle {
         lastObservation.value = uint128(_agg);
         lastObservation.block = block.number;
         delete observations;
+        emit ObservationSubmitted(lastObservation.value, lastObservation.block);
     }
 
     function getLastObservation() external view returns (uint128 _value, uint _block) {

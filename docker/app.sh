@@ -8,6 +8,9 @@ while true; do
 		continue
 	fi
 
+	# Log the price before submitting
+	echo "Submitting price: ${price} (for ${TICKER})"
+
 	# Format calldata to call submitObservation(uint128) method with the price.
 	price_u128=$(printf '%064x' ${price})
 	method="dae1ee1f" # Keccak4("submitObservation(uint128)")

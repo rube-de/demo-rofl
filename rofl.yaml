@@ -1,7 +1,6 @@
 name: demo-rofl
-version: 0.2.0
-repository: https://github.com/oasisprotocol/demo-rofl
-author: Jernej Kos <jernej@kos.mx>
+version: 0.1.0
+repository: https://github.com/rube-de/demo-rofl
 license: Apache-2.0
 tee: tdx
 kind: container
@@ -12,21 +11,22 @@ resources:
     kind: disk-persistent
     size: 512
 artifacts:
-  firmware: https://github.com/oasisprotocol/oasis-boot/releases/download/v0.6.1/ovmf.tdx.fd#db47100a7d6a0c1f6983be224137c3f8d7cb09b63bb1c7a5ee7829d8e994a42f
-  kernel: https://github.com/oasisprotocol/oasis-boot/releases/download/v0.6.1/stage1.bin#118be803795bb40c991bc4d74577c17c04fbdb985106f5a91e23f84e8c2f36b3
-  stage2: https://github.com/oasisprotocol/oasis-boot/releases/download/v0.6.1/stage2-podman.tar.bz2#b2ea2a0ca769b6b2d64e3f0c577ee9c08f0bb81a6e33ed5b15b2a7e50ef9a09f
+  firmware: https://github.com/oasisprotocol/oasis-boot/releases/download/v0.6.2/ovmf.tdx.fd#db47100a7d6a0c1f6983be224137c3f8d7cb09b63bb1c7a5ee7829d8e994a42f
+  kernel: https://github.com/oasisprotocol/oasis-boot/releases/download/v0.6.2/stage1.bin#e5d4d654ca1fa2c388bf64b23fc6e67815893fc7cb8b7cfee253d87963f54973
+  stage2: https://github.com/oasisprotocol/oasis-boot/releases/download/v0.6.2/stage2-podman.tar.bz2#b2ea2a0ca769b6b2d64e3f0c577ee9c08f0bb81a6e33ed5b15b2a7e50ef9a09f
   container:
-    runtime: https://github.com/oasisprotocol/oasis-sdk/releases/download/rofl-containers%2Fv0.7.0/rofl-containers#d9e80fcd85534a3005f2d7d2d9231ae32f49f8ad26363f5e87b2abcfb5274722
+    runtime: https://github.com/oasisprotocol/oasis-sdk/releases/download/rofl-containers%2Fv0.7.3/rofl-containers#964fbd8edaea8041fd9c5304bb4631b7126d57d06062cc3922e50313cdeef618
     compose: compose.yaml
 deployments:
-  test:
-    app_id: rofl1qp55evqls4qg6cjw5fnlv4al9ptc0fsakvxvd9uw
+  default:
+    app_id: rofl1qqka95srx57cyzxjsjjrrlau8c4xfpg7wg2yyvsv
     network: testnet
     paratime: sapphire
-    admin: test_a
-    oci_repository: ghcr.io/kostko/demo-rofl:default
+    admin: myaccount
+    oci_repository: rofl.sh/9bfdb004-9fc4-4b6f-a837-79a1f452a46f:1756804626
     trust_root:
-      height: 24805610
+      height: 28232676
+      hash: 30155b1e05533c6e5040429358548a0f5323d4f3b581f8ca904cfb6a71bc5d27
     policy:
       quotes:
         pcs:
@@ -34,18 +34,14 @@ deployments:
           min_tcb_evaluation_data_number: 18
           tdx: {}
       enclaves:
-        - id: kluo9LgKVS3LxlMlVerBoY72tyDf88M8QSW9mMvLZzsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
-        - id: xi79l+hNfsuQqsOEnsrum8YyWsITpf9mSnSUWQUiXqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+        - id: JepIlEsnzYXgPNRKE/gHbksgetyTQTTXztqOso/TO/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+        - id: gaqNoOX3eOxUb7REwfZBd7thtrfz5NAw2dyOOJ+inrsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
       endorsements:
-        - and:
-            - or:
-                - provider: oasis1qrfeadn03ljm0kfx8wx0d5zf6kj79pxqvv0dukdm
-                - provider: oasis1qp2ens0hsp7gh23wajxa4hpetkdek3swyyulyrmz
-            - provider_instance_admin: oasis1qpwaggvmhwq5uk40clase3knt655nn2tdy39nz2f
+        - any: {}
       fees: endorsing_node
       max_expiration: 3
     machines:
       default:
-        provider: rofl_provider_testnet_a
-        offer: test
-        id: "0000000000000003"
+        provider: oasis1qp2ens0hsp7gh23wajxa4hpetkdek3swyyulyrmz
+        offer: playground_short
+        id: "0000000000000281"

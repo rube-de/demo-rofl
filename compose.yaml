@@ -1,21 +1,15 @@
 services:
   oracle:
-    # See the 'docker' subdirectory for the content of this image.
-    # Note that we are using the sha256 hash of the image to ensure integrity.
-    image: ghcr.io/oasisprotocol/demo-rofl:latest@sha256:7d7530a845eaa8038e50e43ef2aa192a4c7243b8d6102a2626eeea2c71eefb70
+    build:
+      context: ./python
+      dockerfile: Dockerfile
+    image: ghcr.io/rube-de/demo-rofl:latest
+    #image: ghcr.io/oasisprotocol/demo-rofl:latest@sha256:7d7530a845eaa8038e50e43ef2aa192a4c7243b8d6102a2626eeea2c71eefb70
     platform: linux/amd64
     environment:
       # Address of the oracle contract deployed on Sapphire.
-      - CONTRACT_ADDRESS=1234845aaB7b6CD88c7fAd9E9E1cf07638805b20
+      - CONTRACT_ADDRESS=0xcC5c94950A7Dbd58F66D53133d622599De6192c4
       # Ticker.
-      - TICKER=ROSEUSDT
+      - TICKER=BTCUSDT
     volumes:
       - /run/rofl-appd.sock:/run/rofl-appd.sock
-
-  frontend:
-    image: docker.io/hashicorp/http-echo:latest@sha256:fcb75f691c8b0414d670ae570240cbf95502cc18a9ba57e982ecac589760a186
-    platform: linux/amd64
-    environment:
-      ECHO_TEXT: "hello rofl world (${ROFL_PROXY_HOST})"
-    ports:
-      - "5678:5678"
